@@ -13,6 +13,6 @@ project_df <- arc.open(path = 'C:/RStats/PipelineForecast/Data/Pipeline.gdb/Resi
 
 # Verify data has been correctly loaded into R
 
-head(permit_df)
+str(permit_df)
 
-head(project_df)
+str(project_df)
