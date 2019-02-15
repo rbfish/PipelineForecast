@@ -1,18 +1,16 @@
-library(arcgisbinding)
 library(sf)
 library(tidyverse)
 
-# Check connection to ArcGIS Pro
-arc.check_product()
 
-# Import data sets from geodatabase into R using ArcGIS Bridge
+# Import shapefiles into an R data frame
 
-permit_df <- arc.open(path = 'C:/RStats/PipelineForecast/Data/Pipeline.gdb/ResidentialBuildingPermit')
+permit_df <- read_sf('C:/RStats/PipelineForecast/Data/ResidentialBuildingPermit.shp')
 
-project_df <- arc.open(path = 'C:/RStats/PipelineForecast/Data/Pipeline.gdb/ResidentialDevelopmentActivity')
+project_df <- read_sf('C:/RStats/PipelineForecast/Data/ResidentialDevelopmentActivity.shp')
 
 # Verify data has been correctly loaded into R
 
-str(permit_df)
+head(permit_df)
 
-str(project_df)
+head(project_df)
+
