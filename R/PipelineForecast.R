@@ -14,3 +14,9 @@ head(permit_df)
 
 head(project_df)
 
+# Generate a subset of permit_df containing just permits for new construction.
+
+permitNew_df <- filter(permit_df, CP_IMP_TYP == 'NEW')
+
+
+
