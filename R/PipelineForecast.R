@@ -14,13 +14,11 @@ head(permit_df)
 
 head(project_df)
 
-# Generate a subset of permit_df containing just permits for new construction.
 
-permitNew_df <- filter(permit_df, CP_IMP_TYP == 'NEW')
+# Indentity permitNew_df with project_df to assign project numbers to permits
 
-# Indentity permitNew_df with project_df to assign project nubers to permits
+permitProject_df <- st_intersection(permit_df, project_df)
 
-permitNewProject_df <- st_intersection(permitNew_df, project_df)
 
 
 
