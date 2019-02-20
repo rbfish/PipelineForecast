@@ -16,6 +16,7 @@ head(project_df)
 
 
 # Indentity permitNew_df with project_df to assign project numbers to permits and return just the permits that intersect polygons
+# Confirm 10,400 observations
 
 permitProject_df <- st_intersection(permit_df, project_df)
 
