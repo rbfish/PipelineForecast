@@ -24,7 +24,7 @@ permitProject_df <- st_intersection(permit_df, project_df)
 
 glimpse(permitProject_df)
 
-# Testing tidyverse code to count permits per project number
+# Testing tidyverse code to count monthly permits per project number
 
 test1 <- permitProject_df %>% 
     filter(CP_IMP_TYP == "NEW") %>%
