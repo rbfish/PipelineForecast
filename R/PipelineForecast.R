@@ -22,7 +22,7 @@ permitProject_df <- st_intersection(permit_df, project_df)
 
 # Testing tidyverse code to count permits per project number
 
-permitProject_df %>% count(PROJ_NUMBE, CP_USE_TYP, CP_IMP_TYP == "NEW", sort = TRUE)
+test1 <- permitProject_df %>% filter(CP_IMP_TYP == "NEW") %>% count(PROJ_NUMBE, CP_USE_TYP)
 
 
 
