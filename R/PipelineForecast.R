@@ -20,16 +20,18 @@ head(project_df)
 
 permitProject_df <- st_intersection(permit_df, project_df)
 
-# Take a look at the output
+# Take a peek at the output file
 
 glimpse(permitProject_df)
 
 # Testing tidyverse code to count monthly permits per project number
 
-test1 <- permitProject_df %>% 
-    filter(CP_IMP_TYP == "NEW") %>%
-      filter(CP_ISSUE_D >= "2019-01-01" & CP_ISSUE_D <= "2019-01-31") %>%
-        count(PROJ_NUMBE, CP_USE_TYP)
+test2 <- permitProject_df %>% 
+               filter(CP_IMP_TYP == "NEW") %>%
+                  filter(CP_ISSUE_D >= "2019-01-01" & CP_ISSUE_D <= "2019-01-31") %>%
+                     distinct(BP_NBR, .keep_all = TRUE) %>%
+                       count(PROJ_NUMBE, CP_USE_TYP)
+                         
 
 
 
