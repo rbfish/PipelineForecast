@@ -26,7 +26,7 @@ glimpse(permitProject_df)
 
 # Testing tidyverse code to count monthly permits per project number
 
-test2 <- permitProject_df %>% 
+Jan2019 <- permitProject_df %>% 
                filter(CP_IMP_TYP == "NEW") %>%
                   filter(CP_ISSUE_D >= "2019-01-01" & CP_ISSUE_D <= "2019-01-31") %>%
                      distinct(BP_NBR, .keep_all = TRUE) %>%
