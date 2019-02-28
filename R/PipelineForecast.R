@@ -32,6 +32,17 @@ Jan2019 <- permitProject_df %>%
                      distinct(BP_NBR, .keep_all = TRUE) %>%
                        count(PROJ_NUMBE, CP_USE_TYP)
                          
+Dec2018 <- permitProject_df %>% 
+               filter(CP_IMP_TYP == "NEW") %>%
+                  filter(CP_ISSUE_D >= "2018-12-01" & CP_ISSUE_D <= "2018-12-31") %>%
+                     distinct(BP_NBR, .keep_all = TRUE) %>%
+                       count(PROJ_NUMBE, CP_USE_TYP)
+
+Nov2018 <- permitProject_df %>% 
+              filter(CP_IMP_TYP == "NEW") %>%
+                 filter(CP_ISSUE_D >= "2018-11-01" & CP_ISSUE_D <= "2018-11-30") %>%
+                    distinct(BP_NBR, .keep_all = TRUE) %>%
+                      count(PROJ_NUMBE, CP_USE_TYP)
 
 
 
