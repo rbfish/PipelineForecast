@@ -32,9 +32,9 @@ glimpse(permitProjectSubset_df)
 # Gather project_df into tidy data
 
 tidyProject_df <- project_df %>%
-    gather(key = PROJ_NUMBE, value = "ApprovedUnits", APVD_SFD:APVD_APT) %>%
-      gather(key = PROJ_NUMBE, value = "IssuedUnits", ISSD_SFD:ISSD_APT) %>%
-        gather(key = PROJ_NUMBE, value = "PipelineUnits", PIPE_SFD:PIPE_APT)
+    gather(key = "TYPE", value = "ApprovedUnits", APVD_SFD:APVD_APT) %>%
+      gather(key = "TYPE", value = "IssuedUnits", ISSD_SFD:ISSD_APT) %>%
+        gather(key = "TYPE", value = "PipelineUnits", PIPE_SFD:PIPE_APT)
 
 
 # Testing tidyverse code to count monthly permits per project number per month
