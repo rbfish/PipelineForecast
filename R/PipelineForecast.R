@@ -25,7 +25,7 @@ permitProject_df <- st_intersection(permit_df, project_df)
 permitProjectSubset_df <- permitProject_df %>%
         select(BP_NBR, CP_IMP_TYP, CP_ISSUE_D, CP_USE_TYP, PROJ_NUMBE)
 
-# Take a peek at the output file
+# Take a glimpse at the output file
 
 glimpse(permitProjectSubset_df)
 
@@ -33,9 +33,9 @@ glimpse(permitProjectSubset_df)
 
 tidyProject_df <- project_df %>%
     select(PROJ_NUMBE, STATUS, APVD_SFD:PIPE_APT) %>%
-      gather(key = "TYPE", value = "Units", APVD_SFD:PIPE_APT)
+      gather(key = "TYPE", value = "UNIT_COUNT", APVD_SFD:PIPE_APT) %>%
+        separate(TYPE, into = c("UNIT_STATUS","UNIT_TYPE"))
      
-
 
 # Testing tidyverse code to count monthly permits per project number per month
 
@@ -80,6 +80,24 @@ Aug2018 <- permitProjectSubset_df %>%
                   filter(CP_ISSUE_D >= "2018-08-01" & CP_ISSUE_D <= "2018-08-30") %>%
                     distinct(BP_NBR, .keep_all = TRUE) %>%
                       count(PROJ_NUMBE, CP_USE_TYP)
+
+Jul2018 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                  filter(CP_ISSUE_D >= "2018-07-01" & CP_ISSUE_D <= "2018-07-31") %>%
+                    distinct(BP_NBR, .keep_all = TRUE) %>%
+                      count(PROJ_NUMBE, CP_USE_TYP)
+
+Jun2018 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2018-06-01" & CP_ISSUE_D <= "2018-06-30") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
+May2018 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2018-05-01" & CP_ISSUE_D <= "2018-05-31") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
 
 
 
