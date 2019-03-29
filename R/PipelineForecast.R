@@ -153,6 +153,24 @@ Aug2017 <- permitProjectSubset_df %>%
                         distinct(BP_NBR, .keep_all = TRUE) %>%
                           count(PROJ_NUMBE, CP_USE_TYP)
 
+Jul2017 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2017-07-01" & CP_ISSUE_D <= "2017-07-31") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
+Jun2017 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2017-06-01" & CP_ISSUE_D <= "2017-06-30") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
+May2017 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2017-05-01" & CP_ISSUE_D <= "2017-05-31") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
 
 
 
