@@ -37,7 +37,7 @@ tidyProject_df <- project_df %>%
         separate(TYPE, into = c("UNIT_STATUS","UNIT_TYPE"))
      
 
-# Testing tidyverse code to count monthly permits per project number per month
+# Count monthly permits issued per project number per month
 
 Feb2019 <- permitProjectSubset_df %>% 
                filter(CP_IMP_TYP == "NEW") %>%
@@ -194,6 +194,8 @@ Jan2017 <- permitProjectSubset_df %>%
                     filter(CP_ISSUE_D >= "2017-01-01" & CP_ISSUE_D <= "2017-01-31") %>%
                         distinct(BP_NBR, .keep_all = TRUE) %>%
                           count(PROJ_NUMBE, CP_USE_TYP)
+
+#Subtract queried permits from Pipeline to get historical pipeline
 
 
 
