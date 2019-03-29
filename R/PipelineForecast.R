@@ -77,7 +77,7 @@ Sept2018 <- permitProjectSubset_df %>%
 
 Aug2018 <- permitProjectSubset_df %>% 
                 filter(CP_IMP_TYP == "NEW") %>%
-                  filter(CP_ISSUE_D >= "2018-08-01" & CP_ISSUE_D <= "2018-08-30") %>%
+                  filter(CP_ISSUE_D >= "2018-08-01" & CP_ISSUE_D <= "2018-08-31") %>%
                     distinct(BP_NBR, .keep_all = TRUE) %>%
                       count(PROJ_NUMBE, CP_USE_TYP)
 
@@ -99,7 +99,59 @@ May2018 <- permitProjectSubset_df %>%
                         distinct(BP_NBR, .keep_all = TRUE) %>%
                           count(PROJ_NUMBE, CP_USE_TYP)
 
+April2018 <- permitProjectSubset_df %>% 
+                  filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2018-04-01" & CP_ISSUE_D <= "2018-04-30") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
 
+March2018 <- permitProjectSubset_df %>% 
+                  filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2018-03-01" & CP_ISSUE_D <= "2018-03-31") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
+Feb2018 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2018-02-01" & CP_ISSUE_D <= "2018-02-28") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
+Jan2018 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2018-01-01" & CP_ISSUE_D <= "2018-01-31") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
+Dec2017 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2017-12-01" & CP_ISSUE_D <= "2017-12-31") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
+Nov2017 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2017-11-01" & CP_ISSUE_D <= "2017-11-30") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
+Oct2017 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2017-10-01" & CP_ISSUE_D <= "2017-10-31") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
+
+Sept2017 <- permitProjectSubset_df %>% 
+                  filter(CP_IMP_TYP == "NEW") %>%
+                      filter(CP_ISSUE_D >= "2017-09-01" & CP_ISSUE_D <= "2017-09-30") %>%
+                          distinct(BP_NBR, .keep_all = TRUE) %>%
+                            count(PROJ_NUMBE, CP_USE_TYP)
+
+Aug2017 <- permitProjectSubset_df %>% 
+                filter(CP_IMP_TYP == "NEW") %>%
+                    filter(CP_ISSUE_D >= "2017-08-01" & CP_ISSUE_D <= "2017-08-31") %>%
+                        distinct(BP_NBR, .keep_all = TRUE) %>%
+                          count(PROJ_NUMBE, CP_USE_TYP)
 
 
 
