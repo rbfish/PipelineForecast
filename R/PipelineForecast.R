@@ -171,6 +171,7 @@ May2017 <- permitProjectSubset_df %>%
                         distinct(BP_NBR, .keep_all = TRUE) %>%
                           count(PROJ_NUMBE, CP_USE_TYP)
 
+<<<<<<< HEAD
 April2017 <- permitProjectSubset_df %>% 
                   filter(CP_IMP_TYP == "NEW") %>%
                       filter(CP_ISSUE_D >= "2017-04-01" & CP_ISSUE_D <= "2017-04-30") %>%
@@ -197,6 +198,8 @@ Jan2017 <- permitProjectSubset_df %>%
 
 #Subtract queried permits from Pipeline to get historical pipeline
 
+=======
+>>>>>>> 0e0b35a4abbcc76aa0c85128761b352f4a2cf4a9
 
 
 
