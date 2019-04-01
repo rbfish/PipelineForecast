@@ -1,5 +1,6 @@
 library(sf)
 library(tidyverse)
+library(lubridate)
 
 
 # Import shapefiles as an R data frame
@@ -171,7 +172,6 @@ May2017 <- permitProjectSubset_df %>%
                         distinct(BP_NBR, .keep_all = TRUE) %>%
                           count(PROJ_NUMBE, CP_USE_TYP)
 
-<<<<<<< HEAD
 April2017 <- permitProjectSubset_df %>% 
                   filter(CP_IMP_TYP == "NEW") %>%
                       filter(CP_ISSUE_D >= "2017-04-01" & CP_ISSUE_D <= "2017-04-30") %>%
@@ -196,10 +196,14 @@ Jan2017 <- permitProjectSubset_df %>%
                         distinct(BP_NBR, .keep_all = TRUE) %>%
                           count(PROJ_NUMBE, CP_USE_TYP)
 
-#Subtract queried permits from Pipeline to get historical pipeline
+#Plot issued permits by permit type
+permitPlot <- permitProjectSubset_df %>% filter(CP_ISSUE_D > 2013-01-01 & CP_IMP_TYP == "NEW")
+  #             group_by(month = floor_date(CP_ISSUE_D, "month")) %>%
+  #              summarize(UnitSum = sum(CP_USE_TYP))
+  
+  # ggplot(permitPlot, aes(x = CP_ISSUE_D, y = CP_USE_TYP)) +
+  # geom_line()
 
-=======
->>>>>>> 0e0b35a4abbcc76aa0c85128761b352f4a2cf4a9
-
+glimpse(permitProjectSubset_df)
 
 
