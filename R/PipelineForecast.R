@@ -29,13 +29,13 @@ permitProjectSubset_df <- permitProject_df %>%
 
 glimpse(permitProjectSubset_df)
 
-#Plot issued permits by permit type
+#Plot monthly issued permits by structure type
 
 permitPlot <- permitProjectSubset_df %>% 
-  filter(CP_IMP_TYP == "NEW") %>%
-  filter(CP_ISSUE_D >= "2013-01-01") %>%
-  group_by(month = floor_date(CP_ISSUE_D, "month")) %>%
-  summarize(UnitSum = sum(CP_USE_TYP))
+    filter(CP_IMP_TYP == "NEW") %>%
+      filter(CP_ISSUE_D >= "2013-01-01") %>%
+        group_by(month = floor_date(CP_ISSUE_D, "month")) %>%
+          summarize(UnitSum = sum(CP_USE_TYP))
 
   #ggplot(permitPlot, aes(x = CP_ISSUE_D, y = CP_USE_TYP)) +
   #geom_line()
