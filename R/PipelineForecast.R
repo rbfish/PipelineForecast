@@ -34,8 +34,9 @@ glimpse(permitProjectSubset_df)
 permitPlot <- permitProjectSubset_df %>% 
     filter(CP_IMP_TYP == "NEW") %>%
       filter(CP_ISSUE_D >= "2013-01-01") %>%
-        group_by(month = floor_date(CP_ISSUE_D, "month")) %>%
-          summarize(UnitSum = sum(CP_USE_TYP))
+        mutate(month = floor_date(CP_ISSUE_D, unit = "month")) %>%
+          group_by(month, CP_USE_TYP) %>%
+             summarize(UnitSum = sum(CP_USE_TYP))
 
   #ggplot(permitPlot, aes(x = CP_ISSUE_D, y = CP_USE_TYP)) +
   #geom_line()
