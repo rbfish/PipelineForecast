@@ -1,6 +1,5 @@
 library(sf)
 library(tidyverse)
-library(lubridate)
 
 
 # Import shapefiles as an R data frame
@@ -11,9 +10,9 @@ project_df <- read_sf('C:/RStats/PipelineForecast/Data/ResidentialDevelopmentAct
 
 # Verify data has been correctly loaded into R
 
-head(permit_df)
+glimpse(permit_df)
 
-head(project_df)
+glimpse(project_df)
 
 
 # Indentity permit_df with project_df to assign project numbers to permits and return just the permits that intersect polygons
@@ -29,6 +28,17 @@ permitProjectSubset_df <- permitProject_df %>%
 # Take a glimpse at the output file
 
 glimpse(permitProjectSubset_df)
+
+#Plot issued permits by permit type
+
+permitPlot <- permitProjectSubset_df %>% 
+  filter(CP_IMP_TYP == "NEW") %>%
+  filter(CP_ISSUE_D >= "2013-01-01") %>%
+  group_by(month = floor_date(CP_ISSUE_D, "month")) %>%
+  summarize(UnitSum = sum(CP_USE_TYP))
+
+  #ggplot(permitPlot, aes(x = CP_ISSUE_D, y = CP_USE_TYP)) +
+  #geom_line()
 
 # Gather project_df into tidy data
 
@@ -196,14 +206,8 @@ Jan2017 <- permitProjectSubset_df %>%
                         distinct(BP_NBR, .keep_all = TRUE) %>%
                           count(PROJ_NUMBE, CP_USE_TYP)
 
-#Plot issued permits by permit type
-permitPlot <- permitProjectSubset_df %>% filter(CP_ISSUE_D > 2013-01-01 & CP_IMP_TYP == "NEW")
-  #             group_by(month = floor_date(CP_ISSUE_D, "month")) %>%
-  #              summarize(UnitSum = sum(CP_USE_TYP))
-  
-  # ggplot(permitPlot, aes(x = CP_ISSUE_D, y = CP_USE_TYP)) +
-  # geom_line()
 
-glimpse(permitProjectSubset_df)
+
+
 
 
