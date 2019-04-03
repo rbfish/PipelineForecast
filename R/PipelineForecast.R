@@ -1,5 +1,6 @@
 library(sf)
 library(tidyverse)
+library(lubridate)
 
 
 # Import shapefiles as an R data frame
@@ -33,13 +34,13 @@ glimpse(permitProjectSubset_df)
 
 permitPlot <- permitProjectSubset_df %>% 
     filter(CP_IMP_TYP == "NEW") %>%
-      filter(CP_ISSUE_D >= "2013-01-01") %>%
+      filter(CP_ISSUE_D >= "2010-01-01") %>%
         mutate(month = floor_date(CP_ISSUE_D, unit = "month")) %>%
-          group_by(month, CP_USE_TYP) %>%
-             summarize(UnitSum = sum(CP_USE_TYP))
+           group_by(month, CP_USE_TYP) %>%
+             tally()
 
-  #ggplot(permitPlot, aes(x = CP_ISSUE_D, y = CP_USE_TYP)) +
-  #geom_line()
+  ggplot(permitPlot, aes(x = month, y = n, fill = CP_USE_TYP, color = CP_USE_TYP)) +
+  geom_point()
 
 # Gather project_df into tidy data
 
