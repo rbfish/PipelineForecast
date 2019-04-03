@@ -26,21 +26,21 @@ permitProject_df <- st_intersection(permit_df, project_df)
 permitProjectSubset_df <- permitProject_df %>%
         select(BP_NBR, CP_IMP_TYP, CP_ISSUE_D, CP_USE_TYP, PROJ_NUMBE)
 
-# Take a glimpse at the output file
+# Take a glimpse of the output file
 
 glimpse(permitProjectSubset_df)
 
 #Plot monthly issued permits by structure type
 
-permitPlot <- permitProjectSubset_df %>% 
+permitPlot <- permit_df %>% 
     filter(CP_IMP_TYP == "NEW") %>%
-      filter(CP_ISSUE_D >= "2010-01-01") %>%
+      filter(CP_ISSUE_D >= "2001-01-01") %>%
         mutate(month = floor_date(CP_ISSUE_D, unit = "month")) %>%
            group_by(month, CP_USE_TYP) %>%
              tally()
 
   ggplot(permitPlot, aes(x = month, y = n, fill = CP_USE_TYP, color = CP_USE_TYP)) +
-  geom_point()
+  geom_point() + geom_line()
 
 # Gather project_df into tidy data
 
