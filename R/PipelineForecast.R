@@ -30,11 +30,11 @@ permitProjectSubset_df <- permitProject_df %>%
 
 glimpse(permitProjectSubset_df)
 
-#Plot monthly issued permits by structure type
+#Filter/aggrigate and plot monthly issued permits by structure type
 
 permitPlot <- permit_df %>% 
     filter(CP_IMP_TYP == "NEW") %>%
-      filter(CP_ISSUE_D >= "2001-01-01") %>%
+      filter(CP_ISSUE_D >= "2009-01-01") %>%
         mutate(month = floor_date(CP_ISSUE_D, unit = "month")) %>%
            group_by(month, CP_USE_TYP) %>%
              tally()
