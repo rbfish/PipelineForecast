@@ -40,7 +40,9 @@ permitPlot <- permit_df %>%
              tally()
 
   ggplot(permitPlot, aes(x = month, y = n, fill = CP_USE_TYP, color = CP_USE_TYP)) +
-  geom_point() + geom_line()
+  geom_point() + geom_line() +
+  facet_wrap(~ CP_USE_TYP, ncol = 4)
+  
 
 # Gather project_df into tidy data
 
