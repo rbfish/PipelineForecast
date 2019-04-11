@@ -28,10 +28,6 @@ permit_df <- st_set_geometry(permit_sf, NULL)
 project_df <- st_set_geometry(project_sf, NULL)
 permitProject_df <- st_set_geometry(permitProject_sf, NULL)
 
-# Convert sf objects to df
-
-permitProject_df <- as.data.frame(permitProject_sf)
-
 
 # Subset variables of intrest from data frame
 
@@ -41,6 +37,7 @@ permitProjectSubset_df <- permitProject_df %>%
 # Take a glimpse of the output file
 
 glimpse(permitProjectSubset_df)
+
 
 # Filter/aggrigate monthly issued permits by structure type
 
