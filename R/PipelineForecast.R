@@ -21,11 +21,11 @@ glimpse(project_sf)
 
 permitProject_sf <- st_intersection(permit_sf, project_sf)
 
-# Convert sf objects to df
+# Remove geometry from layers
 
-permit_df <- as.data.frame(permit_sf)
-project_df <-as.data.frame(project_sf)
-permitProject_df <- as.data.frame(permitProject_sf)
+permit_df <- st_set_geometry(permit_sf, NULL)
+project_df <- st_set_geometry(project_sf, NULL)
+permitProject_df <- st_set_geometry(permitProject_sf, NULL)
 
 # Subset variables of intrest from data frame
 
