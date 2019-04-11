@@ -247,10 +247,12 @@ Jan2017 <- permitProjectSubset_df %>%
                           count(PROJ_NUMBE, CP_USE_TYP) %>%
                               mutate(UNIT_STATUS = "ISSD")
 
-# Join tidyProject_df with Feb2019 to generate Feb2019 Pipeline dataset
+# Join tidyProject_df with monthly issued permits and convert unmatched numeric column (n) rows from NA's to zeros
 
 Feb2019Pipeline <- tidyProject_df %>%
-    left_join(Feb2019, by = c("PROJ_NUMBE", "UNIT_STATUS", "UNIT_TYPE" = "CP_USE_TYP"))
+    left_join(Feb2019, by = c("PROJ_NUMBE", "UNIT_STATUS", "UNIT_TYPE" = "CP_USE_TYP")) %>%
+        mutate(n = as.numeric(as.character(n))) %>%
+          mutate_if(is.numeric, coalesce, 0)
 
 
 
