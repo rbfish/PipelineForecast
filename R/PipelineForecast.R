@@ -17,7 +17,7 @@ glimpse(project_sf)
 
 
 # Indentity permit_sf with project_sf to assign project numbers to permits and return just the permits that intersect polygons
-# Confirm 11,963 observations as of Feb 28, 2019
+# Confirm 12,319 observations as of May 22, 2019
 
 permitProject_sf <- st_intersection(permit_sf, project_sf)
 
@@ -64,6 +64,20 @@ tidyProject_df <- project_df %>%
      
 
 # Count monthly permits issued per project number per month back to January 2017
+
+Apr2019 <- permitProjectSubset_df %>% 
+  filter(CP_IMP_TYP == "NEW") %>%
+  filter(CP_ISSUE_D >= "2019-04-01" & CP_ISSUE_D <= "2019-04-30") %>%
+  distinct(BP_NBR, .keep_all = TRUE) %>%
+  count(PROJ_NUMBE, CP_USE_TYP) %>%
+  mutate(UNIT_STATUS = "ISSD")
+
+Mar2019 <- permitProjectSubset_df %>% 
+  filter(CP_IMP_TYP == "NEW") %>%
+  filter(CP_ISSUE_D >= "2019-03-01" & CP_ISSUE_D <= "2019-03-31") %>%
+  distinct(BP_NBR, .keep_all = TRUE) %>%
+  count(PROJ_NUMBE, CP_USE_TYP) %>%
+  mutate(UNIT_STATUS = "ISSD")
 
 Feb2019 <- permitProjectSubset_df %>% 
   filter(CP_IMP_TYP == "NEW") %>%
@@ -253,7 +267,8 @@ Jan2017 <- permitProjectSubset_df %>%
 Feb2019Pipeline <- tidyProject_df %>%
   left_join(Feb2019, by = c("PROJ_NUMBE", "UNIT_STATUS", "UNIT_TYPE" = "CP_USE_TYP")) %>%
   mutate(n = as.numeric(as.character(n))) %>%
-  mutate_if(is.numeric, coalesce, 0)
+  #mutate_if(is.numeric, coalesce, 0)
+  mutate_if(is.numeric, replace_na, replace = 0) # Replaced above commented out code after it returned an error with dplyr update to 0.8.1.
 
 
 
