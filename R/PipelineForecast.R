@@ -12,12 +12,13 @@ project_sf <- read_sf('C:/RStats/PipelineForecast/Data/ResidentialDevelopmentAct
 # Verify data has been correctly loaded into R
 
 glimpse(permit_sf)
+st_crs(permit_sf)
 
 glimpse(project_sf)
+st_crs(project_sf)
 
 
-# Indentity permit_sf with project_sf to assign project numbers to permits and return just the permits that intersect polygons
-# Confirm 12,319 observations as of May 22, 2019
+# Intersect permit_sf with project_sf to assign project numbers to permits and return just the permits that intersect polygons
 
 permitProject_sf <- st_intersection(permit_sf, project_sf)
 
